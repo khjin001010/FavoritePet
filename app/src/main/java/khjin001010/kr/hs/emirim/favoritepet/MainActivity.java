@@ -10,8 +10,9 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener{
+public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, View.OnClickListener{
     CheckBox checkboxselect;
     RadioGroup rg;
     RadioButton radio_dog, radio_cat, radio_rabbit;
@@ -33,12 +34,13 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         but_ok = (Button)findViewById(R.id.but_ok);
         imgv_pet = (ImageView)findViewById(R.id.imgv_pet);
         checkboxselect.setOnCheckedChangeListener(this);
+        but_ok.setOnClickListener(this);
 
     }
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if(checkboxselect.isChecked()){
+        if (checkboxselect.isChecked()) {
             txt_1.setVisibility(View.VISIBLE);
             rg.setVisibility(View.VISIBLE);
             radio_dog.setVisibility(View.VISIBLE);
@@ -46,8 +48,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             radio_rabbit.setVisibility(View.VISIBLE);
             but_ok.setVisibility(View.VISIBLE);
             imgv_pet.setVisibility(View.VISIBLE);
-        }
-        else{
+        } else {
             txt_1.setVisibility(View.INVISIBLE);
             rg.setVisibility(View.INVISIBLE);
             radio_dog.setVisibility(View.INVISIBLE);
@@ -55,6 +56,22 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             radio_rabbit.setVisibility(View.INVISIBLE);
             but_ok.setVisibility(View.INVISIBLE);
             imgv_pet.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    public void onClick(View v) {
+        switch (rg.getCheckedRadioButtonId()) {
+            case R.id.radio_dog:
+                imgv_pet.setImageResource(R.drawable.dog);
+                break;
+            case R.id.radio_cat:
+                imgv_pet.setImageResource(R.drawable.cat);
+                break;
+            case R.id.radio_rabbit:
+                imgv_pet.setImageResource(R.drawable.rabbit);
+                break;
+            default:
+                Toast.makeText(getApplicationContext(), "동물 먼저 선택하세요.", Toast.LENGTH_SHORT).show();
         }
     }
 }
