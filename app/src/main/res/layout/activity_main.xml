@@ -20,6 +20,7 @@
         android:text="@string/check_lbl"/>
 
     <TextView
+        android:id="@+id/text_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/msg_quest"
@@ -60,7 +61,7 @@
         android:id="@+id/imgv_pet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/Dog"
+        android:src="@drawable/dog"
         android:visibility="invisible"/>
 
 </LinearLayout>
